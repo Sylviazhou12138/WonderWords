@@ -17,7 +17,13 @@ CORS(app)
 # 获取脚本路径
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 TRANSCRIPT_SCRIPT = os.path.join(SCRIPT_DIR, "get_transcript.py")
-VENV_PYTHON = os.path.join(SCRIPT_DIR, "venv", "bin", "python")
+
+# 在 Render 等生产环境中，使用系统 Python
+# 在本地开发时，使用虚拟环境
+if os.path.exists(os.path.join(SCRIPT_DIR, "venv", "bin", "python")):
+    VENV_PYTHON = os.path.join(SCRIPT_DIR, "venv", "bin", "python")
+else:
+    VENV_PYTHON = "python3"
 
 
 @app.route("/transcript/<video_id>", methods=["GET"])
@@ -87,10 +93,11 @@ def health_check():
 
 
 if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5001))
     print("🚀 WonderWords Transcript Server v4.0 启动中...")
     print("🔧 使用独立脚本调用方式（绕过 Flask 限制）")
-    print("📡 访问地址: http://localhost:5001")
-    print("💡 测试: http://localhost:5001/transcript/dQw4w9WgXcQ")
+    print(f"📡 访问地址: http://0.0.0.0:{port}")
+    print(f"💡 测试: http://localhost:{port}/transcript/dQw4w9WgXcQ")
     print("⏹  停止服务: Ctrl+C")
     print("")
-    app.run(host="0.0.0.0", port=5001, debug=True)
+    app.run(host="0.0.0.0", port=port, debug=False)
