@@ -19,19 +19,9 @@ from youtube_transcript_api import (
 
 def fetch_transcript(video_id: str, languages: List[str]) -> Tuple[List[dict], str]:
     """Fetch transcript using preferred languages."""
-    # 使用正确的 API 方法
-    transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
-
-    # 尝试获取指定语言的字幕
-    try:
-        transcript = transcript_list.find_transcript(languages)
-    except:
-        # 如果找不到指定语言，获取第一个可用的
-        transcript = next(iter(transcript_list))
-
-    # 获取字幕数据
-    transcript_data = transcript.fetch()
-    return transcript_data, transcript.language_code
+    api = YouTubeTranscriptApi()
+    transcript_list = api.get_transcript(video_id, languages=languages)
+    return transcript_list, languages[0]
 
 
 def main(argv: List[str]) -> int:
