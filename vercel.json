@@ -1,12 +1,7 @@
 {
-  "rewrites": [
-    {
-      "source": "/transcript/:video_id",
-      "destination": "/api/transcript"
-    },
-    {
-      "source": "/health",
-      "destination": "/api/health"
+  "functions": {
+    "api/*.py": {
+      "runtime": "python3.9"
     }
-  ]
+  }
 }
