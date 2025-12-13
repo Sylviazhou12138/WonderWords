@@ -1,5 +1,8 @@
 # WonderWords - AI-Powered English Vocabulary Learning Chrome Extension
 
+> **Transform YouTube into Your Personal English Tutor**  
+> WonderWords is a Chrome extension that uses AI to extract and explain advanced vocabulary from any YouTube video with subtitles. Learn in context, at your own pace, in your native language.
+
 **[English](#english) | [中文](#中文)**
 
 ---
@@ -7,7 +10,18 @@
 <a name="english"></a>
 ## English
 
-### Features
+### 🎯 What is WonderWords?
+
+WonderWords is an intelligent Chrome extension designed to help English learners discover and master advanced vocabulary while watching YouTube videos. By combining automatic subtitle extraction with Google Gemini AI, it identifies challenging words and phrases tailored to your learning level (A1-C2) and provides definitions in your native language.
+
+**Why WonderWords?**
+- 📺 **Learn from Real Content**: Study vocabulary from authentic videos you're already interested in
+- 🎓 **Personalized Learning**: Choose your difficulty level and native language for customized results
+- 💡 **Context is Everything**: See words used in real sentences, not just definitions
+- 🚀 **Instant Analysis**: Get AI-powered vocabulary insights in seconds
+- 🌍 **Multi-language Support**: Definitions available in 7 languages (Chinese, Japanese, Korean, Spanish, French, German, English)
+
+### ✨ Key Features
 
 - 🎯 Auto-inject "✨ Analyze Words" button on YouTube video pages
 - 📥 Intelligently extract English subtitles from videos (using youtube-transcript-api)
@@ -210,7 +224,18 @@ MIT License
 <a name="中文"></a>
 ## 中文
 
-### 功能特性
+### 🎯 什么是 WonderWords？
+
+WonderWords 是一款智能 Chrome 扩展，旨在帮助英语学习者在观看 YouTube 视频时发现并掌握高级词汇。通过结合自动字幕提取和 Google Gemini AI，它能识别符合你学习水平（A1-C2）的具有挑战性的单词和短语，并提供母语定义。
+
+**为什么选择 WonderWords？**
+- 📺 **从真实内容中学习**：从你感兴趣的真实视频中学习词汇
+- 🎓 **个性化学习**：选择你的难度级别和母语，获得定制化结果
+- 💡 **语境至关重要**：在真实句子中看到单词的使用，而不仅仅是定义
+- 🚀 **即时分析**：在几秒钟内获得 AI 驱动的词汇洞察
+- 🌍 **多语言支持**：提供 7 种语言的定义（中文、日语、韩语、西班牙语、法语、德语、英语）
+
+### ✨ 核心功能
 
 - 🎯 在 YouTube 视频页面自动注入"✨ Analyze Words"按钮
 - 📥 智能提取视频英文字幕（使用 youtube-transcript-api）
