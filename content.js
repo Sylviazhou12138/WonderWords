@@ -192,7 +192,9 @@ async function startProcess() {
     console.log("📹 Video ID:", videoId);
 
     // 从本地 API 获取字幕
-    const response = await fetch(`http://localhost:5001/transcript/${videoId}`);
+    const response = await fetch(
+      `https://wonderwords-api.onrender.com/transcript/${videoId}`,
+    );
     const data = await response.json();
 
     if (!data.success) {
