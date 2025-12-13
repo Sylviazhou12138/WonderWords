@@ -1,19 +1,12 @@
 {
-  "version": 2,
-  "builds": [
+  "rewrites": [
     {
-      "src": "api/*.py",
-      "use": "@vercel/python"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/transcript/(.*)",
-      "dest": "/api/transcript"
+      "source": "/transcript/:video_id",
+      "destination": "/api/transcript"
     },
     {
-      "src": "/health",
-      "dest": "/api/health"
+      "source": "/health",
+      "destination": "/api/health"
     }
   ]
 }

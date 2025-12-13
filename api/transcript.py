@@ -3,7 +3,6 @@ WonderWords - Vercel Serverless Function
 获取 YouTube 视频字幕的 API 端点
 """
 
-from flask import Flask, jsonify, request
 from youtube_transcript_api import (
     CouldNotRetrieveTranscript,
     NoTranscriptFound,
@@ -11,26 +10,42 @@ from youtube_transcript_api import (
     YouTubeTranscriptApi,
 )
 
-app = Flask(__name__)
 
+def handler(event, context):
+    """
+    Vercel Serverless Function Handler
+    """
+    # 从 URL 路径或 query 参数获取 video_id
+    video_id = None
 
-@app.route("/api/transcript", methods=["GET"])
-def get_transcript():
-    """
-    获取指定视频的字幕
-    URL: /api/transcript?video_id={video_id}
-    或: /transcript/{video_id}
-    """
-    # 从 query 参数或路径获取 video_id
-    video_id = request.args.get("video_id") or request.view_args.get("video_id")
+    # 尝试从 query 参数获取
+    if "queryStringParameters" in event and event["queryStringParameters"]:
+        video_id = event["queryStringParameters"].get("video_id")
+
+    # 尝试从路径参数获取
+    if not video_id and "pathParameters" in event and event["pathParameters"]:
+        video_id = event["pathParameters"].get("video_id")
+
+    # 尝试从路径解析
+    if not video_id and "rawPath" in event:
+        path = event["rawPath"]
+        if "/transcript/" in path:
+            video_id = path.split("/transcript/")[-1].split("/")[0].split("?")[0]
 
     if not video_id:
-        return jsonify({"success": False, "error": "Missing video_id parameter"}), 400
+        return {
+            "statusCode": 400,
+            "headers": {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+            },
+            "body": '{"success": false, "error": "Missing video_id parameter"}',
+        }
 
     try:
         print(f"📥 获取视频 {video_id} 的字幕...")
 
-        # 直接调用 API（在 Vercel 环境中可行）
+        # 直接调用 API
         api = YouTubeTranscriptApi()
         transcript_list = api.list_transcripts(video_id)
 
@@ -57,32 +72,49 @@ def get_transcript():
         }
 
         print(f"✅ 成功: {result['length']} 字符, {result['entries_count']} 条")
-        return jsonify(result)
+
+        import json
+
+        return {
+            "statusCode": 200,
+            "headers": {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+            },
+            "body": json.dumps(result),
+        }
 
     except TranscriptsDisabled:
         print(f"❌ 字幕已禁用")
-        return jsonify(
-            {"success": False, "error": "Transcripts are disabled for this video"}
-        ), 404
+        return {
+            "statusCode": 404,
+            "headers": {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+            },
+            "body": '{"success": false, "error": "Transcripts are disabled for this video"}',
+        }
 
     except NoTranscriptFound:
         print(f"❌ 未找到字幕")
-        return jsonify(
-            {"success": False, "error": "No transcript found for this video"}
-        ), 404
-
-    except CouldNotRetrieveTranscript as e:
-        print(f"❌ 无法获取字幕: {e}")
-        return jsonify(
-            {"success": False, "error": f"Could not retrieve transcript: {str(e)}"}
-        ), 500
+        return {
+            "statusCode": 404,
+            "headers": {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+            },
+            "body": '{"success": false, "error": "No transcript found for this video"}',
+        }
 
     except Exception as e:
         print(f"❌ 错误: {e}")
-        return jsonify({"success": False, "error": str(e)}), 500
+        import json
 
-
-# Vercel 需要这个
-def handler(request):
-    with app.request_context(request.environ):
-        return app.full_dispatch_request()
+        return {
+            "statusCode": 500,
+            "headers": {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+            },
+            "body": json.dumps({"success": False, "error": str(e)}),
+        }
