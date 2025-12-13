@@ -1,5 +1,5 @@
 """
-WonderWords - Health Check API
+WonderWords - Vercel API Entry Point
 """
 
 import json
@@ -15,9 +15,12 @@ class handler(BaseHTTPRequestHandler):
 
         response = {
             "status": "running",
-            "service": "WonderWords Transcript API",
+            "service": "WonderWords API",
             "version": "v1.1-vercel",
-            "environment": "serverless",
+            "endpoints": {
+                "health": "/api/health",
+                "transcript": "/api/transcript?video_id=YOUR_VIDEO_ID",
+            },
         }
 
         self.wfile.write(json.dumps(response).encode())
