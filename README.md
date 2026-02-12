@@ -69,27 +69,13 @@ WonderWords v1.5 comes with a built-in API Key - no configuration needed! Just i
 
 ### Usage
 
-#### Basic Usage
-
 1. Ensure the Python server is running (`./start_server.sh`)
-2. Ensure you've configured your Gemini API Key (see above)
-3. Open any YouTube video with English subtitles
-4. Find the "✨ Analyze Words" button near the video title
-5. Click the button and wait for AI analysis (5-10 seconds)
-6. The sidebar will display extracted vocabulary
+2. Open any YouTube video with English subtitles
+3. Click the "✨ Analyze Words" button near the video title
+4. Wait for AI analysis (5-10 seconds)
+5. Browse vocabulary in the sidebar, click timestamps to jump to context
 
-#### Custom Settings [v1.1]
-
-1. Click the **⚙️ Settings button** in the top-right corner of the sidebar
-2. Select your desired difficulty level:
-   - **A1-A2**: Basic/Elementary vocabulary (for beginners)
-   - **B1-B2**: Intermediate/Upper-Intermediate vocabulary (for intermediate learners) ← Default
-   - **C1-C2**: Advanced/Proficiency vocabulary (for advanced learners)
-3. Select your native language (definitions will be shown in this language)
-4. Click "Save Settings"
-5. Re-analyze the video to apply new settings
-
-**Tip**: Settings are automatically saved and synced across all Chrome browsers logged in with the same Google account.
+**Settings**: Click ⚙️ in the sidebar to adjust difficulty level (A1-C2) and definition language.
 
 ### Technical Implementation
 
@@ -285,27 +271,13 @@ WonderWords v1.5 内置了 API Key，无需任何配置！安装即可开始学�
 
 ### 使用方法
 
-#### 基础使用
-
 1. 确保 Python 服务器正在运行（`./start_server.sh`）
-2. 确保已配置 Gemini API Key（见上方说明）
-3. 打开任意 YouTube 视频（带英文字幕）
-4. 在视频标题旁找到"✨ Analyze Words"按钮
-5. 点击按钮，等待 AI 分析（约 5-10 秒）
-6. 右侧侧边栏将显示提取的词汇
+2. 打开任意 YouTube 视频（带英文字幕）
+3. 点击视频标题旁的"✨ Analyze Words"按钮
+4. 等待 AI 分析（约 5-10 秒）
+5. 在侧边栏浏览词汇，点击时间戳可跳转到对应位置
 
-#### 自定义设置 [v1.1]
-
-1. 点击侧边栏右上角的 **⚙️ 设置按钮**
-2. 选择你想学习的难度级别：
-   - **A1-A2**: 基础/初级词汇（适合初学者）
-   - **B1-B2**: 中级/中高级词汇（适合中级学习者）← 默认
-   - **C1-C2**: 高级/精通级词汇（适合高级学习者）
-3. 选择你的母语（词汇定义将以该语言显示）
-4. 点击"Save Settings"保存
-5. 重新分析视频以应用新设置
-
-**提示**：设置会自动保存，并在所有登录同一 Google 账号的 Chrome 浏览器间同步。
+**设置**：点击侧边栏的 ⚙️ 可调整难度级别（A1-C2）和释义语言。
 
 ### 技术实现
 
