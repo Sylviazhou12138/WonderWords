@@ -1,37 +1,56 @@
 <!doctype html>
 <html>
     <head>
+        <meta charset="UTF-8" />
         <style>
             body {
                 width: 300px;
-                padding: 15px;
+                padding: 20px;
                 background: #202124;
                 color: #fff;
-                font-family: sans-serif;
+                font-family: -apple-system, sans-serif;
+                margin: 0;
             }
             h2 {
-                margin-top: 0;
-                font-size: 16px;
+                margin: 0 0 4px 0;
+                font-size: 18px;
                 color: #8ab4f8;
             }
-            input {
+            .subtitle {
+                font-size: 12px;
+                color: #9aa0a6;
+                margin-bottom: 18px;
+            }
+            label {
+                display: block;
+                font-size: 12px;
+                color: #9aa0a6;
+                margin-bottom: 6px;
+            }
+            select {
                 width: 100%;
-                padding: 8px;
-                margin: 10px 0;
-                border-radius: 4px;
+                padding: 9px 10px;
+                margin-bottom: 16px;
+                border-radius: 6px;
                 border: 1px solid #5f6368;
                 background: #303134;
                 color: #fff;
-                box-sizing: border-box;
+                font-size: 13px;
+                appearance: auto;
+            }
+            select:focus {
+                outline: none;
+                border-color: #8ab4f8;
             }
             button {
                 width: 100%;
-                padding: 8px;
+                padding: 10px;
                 background: #8ab4f8;
                 border: none;
-                border-radius: 4px;
+                border-radius: 6px;
                 color: #202124;
                 font-weight: bold;
+                font-size: 13px;
                 cursor: pointer;
             }
             button:hover {
@@ -40,20 +59,40 @@
             .status {
                 margin-top: 10px;
                 font-size: 12px;
-                color: #9aa0a6;
+                text-align: center;
+                color: #81c995;
+                min-height: 16px;
             }
         </style>
     </head>
     <body>
-        <h2>WonderWords Settings</h2>
-        <label for="apiKey">Gemini API Key:</label>
-        <input
-            type="password"
-            id="apiKey"
-            placeholder="Paste API Key here..."
-        />
-        <button id="saveBtn">Save Key</button>
+        <h2>WonderWords</h2>
+        <div class="subtitle">YouTube vocabulary assistant</div>
+
+        <label for="difficulty">Difficulty Level</label>
+        <select id="difficulty">
+            <option value="A1">A1 - Beginner</option>
+            <option value="A2">A2 - Elementary</option>
+            <option value="B1">B1 - Intermediate</option>
+            <option value="B2" selected>B2 - Upper Intermediate</option>
+            <option value="C1">C1 - Advanced</option>
+            <option value="C2">C2 - Proficiency</option>
+        </select>
+
+        <label for="language">Definition Language</label>
+        <select id="language">
+            <option value="Chinese">中文</option>
+            <option value="Japanese">日本語</option>
+            <option value="Korean">한국어</option>
+            <option value="Spanish">Español</option>
+            <option value="French">Français</option>
+            <option value="German">Deutsch</option>
+            <option value="English">English</option>
+        </select>
+
+        <button id="saveBtn">Save</button>
         <div class="status" id="status"></div>
+
         <script src="popup.js"></script>
     </body>
 </html>

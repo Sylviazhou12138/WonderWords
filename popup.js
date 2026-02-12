@@ -1,23 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const apiKeyInput = document.getElementById("apiKey");
+  const difficultySelect = document.getElementById("difficulty");
+  const languageSelect = document.getElementById("language");
   const saveBtn = document.getElementById("saveBtn");
   const status = document.getElementById("status");
 
-  // Load saved key
-  chrome.storage.sync.get(["geminiApiKey"], (result) => {
-    if (result.geminiApiKey) {
-      apiKeyInput.value = result.geminiApiKey;
-    }
-  });
+  // Load saved settings
+  chrome.storage.sync.get(
+    { difficulty: "B2", nativeLanguage: "Chinese" },
+    (result) => {
+      difficultySelect.value = result.difficulty;
+      languageSelect.value = result.nativeLanguage;
+    },
+  );
 
-  // Save key
+  // Save settings
   saveBtn.addEventListener("click", () => {
-    const key = apiKeyInput.value.trim();
-    if (key) {
-      chrome.storage.sync.set({ geminiApiKey: key }, () => {
-        status.textContent = "API Key saved! Reload YouTube page.";
-        setTimeout(() => (status.textContent = ""), 2000);
-      });
-    }
+    chrome.storage.sync.set(
+      {
+        difficulty: difficultySelect.value,
+        nativeLanguage: languageSelect.value,
+      },
+      () => {
+        status.textContent = "Saved! Reload YouTube page to apply.";
+        setTimeout(() => (status.textContent = ""), 3000);
+      },
+    );
   });
 });

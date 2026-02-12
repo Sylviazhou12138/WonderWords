@@ -46,6 +46,15 @@ def main(argv: List[str]) -> int:
         if args.json:
             # 输出 JSON 格式
             full_text = " ".join([entry["text"] for entry in transcript])
+            # 保留每条字幕的时间戳信息，供前端做视频跳转
+            entries = [
+                {
+                    "text": entry.get("text", ""),
+                    "start": entry.get("start", 0),
+                    "duration": entry.get("duration", 0),
+                }
+                for entry in transcript
+            ]
             output = {
                 "success": True,
                 "video_id": args.video_id,
@@ -53,6 +62,7 @@ def main(argv: List[str]) -> int:
                 "text": full_text,
                 "length": len(full_text),
                 "entries_count": len(transcript),
+                "entries": entries,
             }
             print(json.dumps(output, ensure_ascii=False))
         else:

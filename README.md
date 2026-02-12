@@ -61,22 +61,11 @@ chmod +x start_server.sh
 
 The server will run at `http://localhost:5001`. See [SERVER_SETUP.md](SERVER_SETUP.md) for details.
 
-#### 3. Configure Gemini API Key (Required)
+#### 3. Ready to Use!
 
-WonderWords uses Google Gemini AI for vocabulary analysis. You need your own API Key.
+WonderWords v1.5 comes with a built-in API Key - no configuration needed! Just install and start learning.
 
-1. **Get a free API Key**:
-   - Visit https://aistudio.google.com/apikey
-   - Sign in with your Google account
-   - Click "Create API Key"
-   - Copy the generated API Key
-
-2. **Configure in the extension**:
-   - Click the WonderWords icon in Chrome toolbar
-   - Paste your API Key in the input box
-   - Click "Save Key"
-
-**Note**: Free quota is 15 requests per minute, 1500 requests per day. If you exceed the quota, wait a few minutes before retrying.
+**Note**: If you encounter rate limiting (429 errors), the extension will automatically retry. For heavy usage, you can get your own free API Key at https://aistudio.google.com/apikey
 
 ### Usage
 
@@ -188,7 +177,20 @@ WonderWords/
 
 ### Changelog
 
-#### v1.1 (2025-12-11) - Current Version
+#### v1.5 (2025-02-11) - Current Version
+- 🔑 **Zero Config**: Built-in API Key, no user configuration required
+- ⚡ **429 Auto-Retry**: Automatic retry with backoff when rate limited
+- 🔧 **JSON Repair**: Robust JSON parsing that extracts words even from truncated responses
+- 🎯 **Better Timestamps**: Improved timestamp matching with substring support
+- 🐛 **Bug Fixes**: Fixed popup encoding issues, improved error handling
+
+#### v1.4 (2025-02-10)
+- 🔑 Built-in API Key (zero configuration)
+- 🎨 Simplified popup (settings only, no API key input)
+- ⚡ 429 rate limit auto-retry mechanism
+- 📝 Optimized prompts for better context explanations
+
+#### v1.1 (2025-12-11)
 - ✨ **New Feature**: Difficulty level selection (A1-C2, based on CEFR standards)
 - 🌍 **New Feature**: Native language selection (Chinese, Japanese, Korean, Spanish, French, German, English)
 - ⚙️ Settings UI (gear icon in sidebar top-right)
@@ -275,22 +277,11 @@ chmod +x start_server.sh
 
 服务器将在 `http://localhost:5001` 运行。详见 [SERVER_SETUP.md](SERVER_SETUP.md)
 
-#### 3. 配置 Gemini API Key（必需）
+#### 3. 开始使用！
 
-WonderWords 使用 Google Gemini AI 进行词汇分析，需要您自己的 API Key。
+WonderWords v1.5 内置了 API Key，无需任何配置！安装即可开始学习。
 
-1. **获取免费 API Key**：
-   - 访问 https://aistudio.google.com/apikey
-   - 登录 Google 账号
-   - 点击 "Create API Key" 创建密钥
-   - 复制生成的 API Key
-
-2. **在扩展中配置**：
-   - 点击 Chrome 工具栏中的 WonderWords 图标
-   - 粘贴 API Key 到输入框
-   - 点击 "Save Key" 保存
-
-**注意**：免费配额为每分钟 15 次请求，每天 1500 次请求。如果超出配额，请等待几分钟后重试。
+**注意**：如果遇到限流（429 错误），扩展会自动重试。如需大量使用，可以在 https://aistudio.google.com/apikey 获取自己的免费 API Key。
 
 ### 使用方法
 
@@ -402,7 +393,20 @@ WonderWords/
 
 ### 更新日志
 
-#### v1.1 (2025-12-11) - 当前版本
+#### v1.5 (2025-02-11) - 当前版本
+- 🔑 **零配置**: 内置 API Key，用户无需任何配置即可使用
+- ⚡ **429 自动重试**: 遇到限流时自动等待重试
+- 🔧 **JSON 修复**: 即使 AI 响应被截断也能提取完整词汇
+- 🎯 **时间戳优化**: 改进时间戳匹配，支持子串匹配
+- 🐛 **Bug 修复**: 修复弹窗编码问题，改进错误处理
+
+#### v1.4 (2025-02-10)
+- 🔑 内置 API Key（零配置）
+- 🎨 简化弹窗（仅设置，无需输入 API Key）
+- ⚡ 429 限流自动重试机制
+- 📝 优化 Prompt，改进语境解释
+
+#### v1.1 (2025-12-11)
 - ✨ **新功能**: 难度级别选择（A1-C2，基于 CEFR 标准）
 - 🌍 **新功能**: 母语选择（中文、日语、韩语、西班牙语、法语、德语、英语）
 - ⚙️ 设置界面（侧边栏右上角齿轮图标）

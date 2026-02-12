@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-WonderWords - YouTube Transcript API Server (v4.0)
+WonderWords - YouTube Transcript API Server (v1.2)
 通过调用独立 Python 脚本获取字幕（绕过 Flask 限制）
 """
 
@@ -80,14 +80,14 @@ def health_check():
     return jsonify(
         {
             "status": "running",
-            "service": "WonderWords Transcript API v4.0",
+            "service": "WonderWords Transcript API v1.2",
             "method": "subprocess call",
         }
     )
 
 
 if __name__ == "__main__":
-    print("🚀 WonderWords Transcript Server v4.0 启动中...")
+    print("🚀 WonderWords Transcript Server v1.2 启动中...")
     print("🔧 使用独立脚本调用方式（绕过 Flask 限制）")
     print("📡 访问地址: http://localhost:5001")
     print("💡 测试: http://localhost:5001/transcript/dQw4w9WgXcQ")
